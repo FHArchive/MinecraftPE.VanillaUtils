@@ -3,7 +3,7 @@ registers/modBlock.js generate the block forms of the decorBlocks: block and bri
 */
 
 
-var DECOR_TOOLS_VAN_ID = DECOR_BLOCK_VAN_ID.concat(INCL_TOOLS_VAN_ID)
+var DECOR_TOOLS_VAN_ID = DECOR_BLOCK_VAN_ID.concat(INCL_TOOLS_VAN_ID);
 var DECOR_TOOLS = DECOR_BLOCK.concat(INCL_TOOLS);
 var DECOR_TOOLS_LEN = DECOR_BLOCK_LEN + INCL_TOOLS_LEN;
 
@@ -14,10 +14,10 @@ var GLASS_LAMP_LEN = GLASS_BLOCK_LEN + INCL_LAMP_LEN;
 /*
 Blocks only for ethereal and decoration 
 */
-var modBlocks = ["ethereal", "decoration"]
+var modBlocks = ["ethereal", "decoration"];
 for (var index = 0; index < modBlocks.length; index++){
     var decorBlock = modBlocks[index];
-    decorBlockID = createIDName(decorBlock, "block")
+    decorBlockID = createIDName(decorBlock, "block");
     IDRegistry.genBlockID(decorBlockID);
     Block.createBlock(decorBlockID, [
         {name: createNameReadable(decorBlock, "block"), texture: [[createTexName(decorBlock, "block"), 0]], inCreative: true}
