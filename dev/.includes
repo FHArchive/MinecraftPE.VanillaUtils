@@ -4,8 +4,6 @@ data/decorBlock.js
 data/armor.js
 data/tools.js
 
-utils/helpers.js
-
 
 registers/modBlocks.js
 registers/modItems.js

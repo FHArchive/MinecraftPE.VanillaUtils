@@ -5,7 +5,7 @@ Callback.addCallback("PreLoaded", function(){
     // Transmute up
 
 
-    var transmute4 = [{
+    let transmute4 = [{
         result: [266,0],
         ingredient: [265,0]
     },
@@ -15,7 +15,7 @@ Callback.addCallback("PreLoaded", function(){
     },
 
     ]
-    var transmute2 = [{
+    let transmute2 = [{
         result: [369,0],
         ingredient: [337,0]
     },
@@ -40,7 +40,7 @@ Callback.addCallback("PreLoaded", function(){
 
 
     // Transmute down
-    var dtransmute4 = [{
+    let dtransmute4 = [{
         result: [265,0],
         ingredient: [266,0]
     },
@@ -50,7 +50,7 @@ Callback.addCallback("PreLoaded", function(){
     }
 
     ]
-    var dtransmute2 = [{
+    let dtransmute2 = [{
         result: [337,0],
         ingredient: [369,0]
     },
@@ -67,7 +67,7 @@ Callback.addCallback("PreLoaded", function(){
 
 
     // Transmute left right 
-    var transmute = [{
+    let transmute = [{
         result: [13,0],
         ingredient: [12,0]
     },
@@ -132,7 +132,7 @@ Callback.addCallback("PreLoaded", function(){
 
 
     // Transmute smelt 
-    var transmuteSmelt = [{
+    let transmuteSmelt = [{
         result: [263,0],
         ingredient: [16,0]
     },
@@ -171,37 +171,37 @@ Callback.addCallback("PreLoaded", function(){
 
     // Transmute up
     
-    for (var index = 0; index < transmute2.length; index++){
-        var recipe = transmute2[index]
+    for (let index = 0; index < transmute2.length; index++){
+        let recipe = transmute2[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
-    for (var index = 0; index < transmute4.length; index++){
-        var recipe = transmute4[index]
+    for (let index = 0; index < transmute4.length; index++){
+        let recipe = transmute4[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
 
     // Transmute down 
-    for (var index = 0; index < dtransmute2.length; index++){
-        var recipe = dtransmute2[index]
+    for (let index = 0; index < dtransmute2.length; index++){
+        let recipe = dtransmute2[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 2, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
-    for (var index = 0; index < dtransmute4.length; index++){
-        var recipe = dtransmute4[index]
+    for (let index = 0; index < dtransmute4.length; index++){
+        let recipe = dtransmute4[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 4, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
     }
 
     // Transmute left right
-    for (var index = 0; index < transmute.length; index++){
-        var recipe = transmute[index]
+    for (let index = 0; index < transmute.length; index++){
+        let recipe = transmute[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
     }
 
     // Transmute smelt
-    for (var index = 0; index < transmute4.length; index++){
-        var recipe = transmute4[index]
+    for (let index = 0; index < transmute4.length; index++){
+        let recipe = transmute4[index]
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: 263, data: 0},{id: ItemID["ethereal"], data: 0}]);
 
     }

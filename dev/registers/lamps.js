@@ -6,19 +6,18 @@ Block.createSpecialType({
 	renderlayer: 3
 }, "lamp");
 
-var LAMPS_TOOLS_VAN_ID = INCL_LAMP_VAN_ID.concat(INCL_TOOLS_VAN_ID)
-var LAMPS_TOOLS = INCL_LAMP.concat(INCL_TOOLS);
-var LAMPS_TOOLS_LEN = INCL_LAMP_LEN + INCL_TOOLS_LEN;
+let LAMPS_TOOLS_VAN_ID = INCL_LAMP_VAN_ID.concat(INCL_TOOLS_VAN_ID)
+let LAMPS_TOOLS = INCL_LAMP.concat(INCL_TOOLS);
+let LAMPS_TOOLS_LEN = INCL_LAMP_LEN + INCL_TOOLS_LEN;
 
-var lamps = [];
-var lampsInv = [];
+let lamps = [];
+let lampsInv = [];
 
-for (var index = 0; index < LAMPS_TOOLS_LEN; index++){
-	var lampTool = LAMPS_TOOLS[index];
+for (let index = 0; index < LAMPS_TOOLS_LEN; index++){
+	let lampTool = LAMPS_TOOLS[index];
 
-	// createNameReadable doesn't work with _ separated 
-	let lamp = {name: createNameReadable(lampTool, "lamp"), texture: [[createTexName(lampTool, "lamp"),0]], inCreative: true}
-	let lampInv = {name: createNameReadable(lampTool, "Inverted Lamp"), texture: [[createTexName(lampTool, "lamp_on"),0]], inCreative: true}
+	let lamp = {name: CoreHelpers.createNameReadable(lampTool, "lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp"),0]], inCreative: true}
+	let lampInv = {name: CoreHelpers.createNameReadable(lampTool, "Inverted Lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp_on"),0]], inCreative: true}
 
 	lamps.push(lamp);
 	lampsInv.push(lampInv)
@@ -41,9 +40,9 @@ Block.registerDropFunction("lampInv", function(coords, blockID, blockData, level
 
 function placeFunction(coords, item, block){
 	Game.prevent();
-	var x = coords.relative.x;
-	var y = coords.relative.y;
-	var z = coords.relative.z;
+	let x = coords.relative.x;
+	let y = coords.relative.y;
+	let z = coords.relative.z;
 	block = World.getBlockID(x, y, z);
 	if(GenerationUtils.isTransparentBlock(block)){
 		World.setBlock(x, y, z, item.id, item.data);
@@ -53,16 +52,16 @@ function placeFunction(coords, item, block){
 }
 
 function swapBlock(block, targetBlock, setInverted){
-	var x = block.x, y = block.y, z = block.z;
+	let x = block.x, y = block.y, z = block.z;
 	block.selfDestroy();
-	var data = World.getBlock(x, y, z).data;
+	let data = World.getBlock(x, y, z).data;
 	World.setBlock(x, y, z, BlockID[targetBlock], data);
-	var tile = World.addTileEntity(x, y, z);
+	let tile = World.addTileEntity(x, y, z);
 	tile.data.inverted = setInverted;
 }
 
 function destroy(block,coords){
-	var data = World.getBlock(coords.x, coords.y, coords.z).data;
+	let data = World.getBlock(coords.x, coords.y, coords.z).data;
 	if(block.data.inverted){
 		World.drop(coords.x, coords.y, coords.z, BlockID.lampInv, 1, data);
 	}else{
@@ -76,8 +75,8 @@ https://www.digminecraft.com/lists/item_id_list_pe.php
 */
 
 Callback.addCallback("PreLoaded", function(){
-	for(var i = 0; i < LAMPS_TOOLS_LEN; i++){
-        var lampTool = LAMPS_TOOLS_VAN_ID[i];
+	for(let i = 0; i < LAMPS_TOOLS_LEN; i++){
+        let lampTool = LAMPS_TOOLS_VAN_ID[i];
 		Recipes.addShaped({id: BlockID.lamp, count: 1, data: i}, [
             "xxx",
             "xrx",

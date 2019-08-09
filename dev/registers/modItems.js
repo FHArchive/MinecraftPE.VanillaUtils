@@ -2,7 +2,7 @@
 registers/modItems.js generate the item forms of the inclTools: tools and armor 
 */
 
-var ToolProperties = {
+let ToolProperties = {
     granite: {
         durability: 131, level: 1, efficiency: 4, damage: 1.5, enchantability: 5   
 	},
@@ -18,7 +18,7 @@ var ToolProperties = {
 	
 };
 
-var ArmorProperties = {
+let ArmorProperties = {
     granite: {
         durability: 23,
         helm: { armor : 1, texture: "armor/granite_layer_1.png"}, 
@@ -47,51 +47,27 @@ var ArmorProperties = {
 };
 
 // Ethereal item
-var ethereal = "ethereal"
-IDRegistry.genItemID(ethereal);
-Item.createItem(ethereal, capFirstLetter(ethereal), {name: ethereal});
+ItemLib.createSimpleItem("ethereal")
 
-
-
-for (var index = 0; index < INCL_TOOLS_LEN; index++){
-    var inclTool = INCL_TOOLS[index];
+for (let index = 0; index < INCL_TOOLS_LEN; index++){
+    let inclTool = INCL_TOOLS[index];
 
 
     // Tools 
     ToolAPI.addToolMaterial(inclTool, {durability: ToolProperties[inclTool].durability, level: ToolProperties[inclTool].level, efficiency: ToolProperties[inclTool].efficiency, damage: ToolProperties[inclTool].damage, enchantability: ToolProperties[inclTool].enchantability});
 
-    for (var toolIndex = 0; toolIndex < TOOLS_LEN; toolIndex++){
-        var tType = TOOLS[toolIndex];
-        var TOOL_ID_NAME = createIDName(inclTool, tType);
-
-        // Create the tool item 
-        IDRegistry.genItemID(TOOL_ID_NAME);
-        Item.createItem(TOOL_ID_NAME, createNameReadable(inclTool, tType), {name: createTexName(inclTool, tType), meta: 0}, {stack: 1});
-        ToolAPI.setTool(ItemID[TOOL_ID_NAME], inclTool, ToolType[tType]);
-
+    for (let toolIndex = 0; toolIndex < TOOLS_LEN; toolIndex++){
+        let tType = TOOLS[toolIndex];
+        ItemLib.createTool(inclTool, tType);
         
     }
 
     
     
     // Armor 
-    for (var armorIndex = 0; armorIndex < ARMOR_LEN; armorIndex++){
-        var aType = ARMOR[armorIndex];
-        var armorType = aType;
-        // For compatibility with my naming conventions 
-        if (aType === "helm"){
-            armorType = "helmet";
-        }
-        if (aType === "chest"){
-            armorType = "chestplate";
-        }
-
-        var ARMOR_ID_NAME = createIDName(inclTool, aType);
-
-        // Create the armor item 
-        IDRegistry.genItemID(ARMOR_ID_NAME);
-        Item.createArmorItem(ARMOR_ID_NAME, createNameReadable(inclTool, aType), {name: createTexName(inclTool, aType)}, {type: armorType, armor: ArmorProperties[inclTool][aType].armor, durability: ArmorProperties[inclTool].durability * ARMOR_MAX_DAM_RED[aType], texture: ArmorProperties[inclTool][aType].texture});
-
+    for (let armorIndex = 0; armorIndex < ARMOR_LEN; armorIndex++){
+        let aType = ARMOR[armorIndex];
+        ItemLib.createArmor(ArmorProperties,inclTool, aType);
         
 
     }
@@ -102,26 +78,26 @@ Callback.addCallback("PreLoaded", function(){
 
     
     // Furnace ethereal
-    Recipes.addFurnace(BlockID[createIDName("ethereal", "ore")], ItemID["ethereal"], 0);
+    Recipes.addFurnace(BlockID[CoreHelpers.createIDName("ethereal", "ore")], ItemID["ethereal"], 0);
 
     
-    for (var index = 0; index < INCL_TOOLS_LEN; index++){
-        var inclTool = INCL_TOOLS[index];
-        var ingredient = INCL_TOOLS_VAN_ID[index]
+    for (let index = 0; index < INCL_TOOLS_LEN; index++){
+        let inclTool = INCL_TOOLS[index];
+        let ingredient = INCL_TOOLS_VAN_ID[index]
 
 
         // Tools
-        for (var toolIndex = 0; toolIndex < TOOLS_LEN; toolIndex++){
-            var tcType = TOOLS[toolIndex];
+        for (let toolIndex = 0; toolIndex < TOOLS_LEN; toolIndex++){
+            let tcType = TOOLS[toolIndex];
             // Create the recipe for the tool 
-            Recipes.addShaped({id: ItemID[createIDName(inclTool, tcType)], count: 1, data: 0}, TOOLS_RECIPES[tcType], ["a", ingredient[0], ingredient[1], "b", 280, 0]);
+            Recipes.addShaped({id: ItemID[CoreHelpers.createIDName(inclTool, tcType)], count: 1, data: 0}, ItemLib.recipes.tools[tcType], ["a", ingredient[0], ingredient[1], "b", 280, 0]);
         }
 
         // Armor 
-        for (var armorIndex = 0; armorIndex < ARMOR_LEN; armorIndex++){
-            var acType = ARMOR[armorIndex];
+        for (let armorIndex = 0; armorIndex < ARMOR_LEN; armorIndex++){
+            let acType = ARMOR[armorIndex];
             // Create the recipe for the armor 
-            Recipes.addShaped({id: ItemID[createIDName(inclTool, acType)], count: 1, data: 0}, ARMOR_RECIPES[acType], ["x", ingredient[0], ingredient[1]]);
+            Recipes.addShaped({id: ItemID[CoreHelpers.createIDName(inclTool, acType)], count: 1, data: 0}, ItemLib.recipes.armor[acType], ["x", ingredient[0], ingredient[1]]);
 
         }
     }

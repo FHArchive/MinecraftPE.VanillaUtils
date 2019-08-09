@@ -10,5 +10,8 @@
 //  - BY FREDHAPPYFACE (MIT 2019)                                        
                                                                            
  
-
+IMPORT("CoreHelpers");
 IMPORT("ToolLib");
+IMPORT("RecipeLib");
+IMPORT("BlockLib");
+IMPORT("ItemLib");
