@@ -47,7 +47,7 @@ let ArmorProperties = {
 };
 
 // Ethereal item
-ItemLib.createSimpleItem("ethereal")
+ItemLib.createSimpleItem("ethereal");
 
 for (let index = 0; index < INCL_TOOLS_LEN; index++){
     let inclTool = INCL_TOOLS[index];
@@ -83,7 +83,7 @@ Callback.addCallback("PreLoaded", function(){
     
     for (let index = 0; index < INCL_TOOLS_LEN; index++){
         let inclTool = INCL_TOOLS[index];
-        let ingredient = INCL_TOOLS_VAN_ID[index]
+        let ingredient = INCL_TOOLS_VAN_ID[index];
 
 
         // Tools

@@ -165,7 +165,7 @@ Callback.addCallback("PreLoaded", function(){
         ingredient: [73,0]
     }
 
-    ]
+    ];
 
 
 

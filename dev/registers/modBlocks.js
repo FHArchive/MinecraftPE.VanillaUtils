@@ -92,7 +92,7 @@ Callback.addCallback("PreLoaded", function(){
         let ingredient = INCL_LAMP_VAN_ID[index]; 
        
         // Blocks
-        RecipeLib.shapeless.resultFromName({result: [decorBlock, "block", 1], ingredients: [{id: BlockID.blockDecoration, data: 0},{id: ingredient[0], data: ingredient[1]}]}, BlockID)
+        RecipeLib.shapeless.resultFromName({result: [decorBlock, "block", 1], ingredients: [{id: BlockID.blockDecoration, data: 0},{id: ingredient[0], data: ingredient[1]}]}, BlockID);
 
 
         
