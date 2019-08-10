@@ -6,7 +6,7 @@ Block.createSpecialType({
 	renderlayer: 3
 }, "lamp");
 
-let LAMPS_TOOLS_VAN_ID = INCL_LAMP_VAN_ID.concat(INCL_TOOLS_VAN_ID)
+let LAMPS_TOOLS_VAN_ID = INCL_LAMP_VAN_ID.concat(INCL_TOOLS_VAN_ID);
 let LAMPS_TOOLS = INCL_LAMP.concat(INCL_TOOLS);
 let LAMPS_TOOLS_LEN = INCL_LAMP_LEN + INCL_TOOLS_LEN;
 
@@ -16,11 +16,11 @@ let lampsInv = [];
 for (let index = 0; index < LAMPS_TOOLS_LEN; index++){
 	let lampTool = LAMPS_TOOLS[index];
 
-	let lamp = {name: CoreHelpers.createNameReadable(lampTool, "lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp"),0]], inCreative: true}
-	let lampInv = {name: CoreHelpers.createNameReadable(lampTool, "Inverted Lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp_on"),0]], inCreative: true}
+	let lamp = {name: CoreHelpers.createNameReadable(lampTool, "lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp"),0]], inCreative: true};
+	let lampInv = {name: CoreHelpers.createNameReadable(lampTool, "Inverted Lamp"), texture: [[CoreHelpers.createTexName(lampTool, "lamp_on"),0]], inCreative: true};
 
 	lamps.push(lamp);
-	lampsInv.push(lampInv)
+	lampsInv.push(lampInv);
 
 }
 

@@ -17,7 +17,7 @@ Blocks only for ethereal and decoration
 let modBlocks = ["ethereal", "decoration"];
 for (let index = 0; index < modBlocks.length; index++){
     let decorBlock = modBlocks[index];
-    BlockLib.createSimpleBlock(decorBlock, "block")
+    BlockLib.createSimpleBlock(decorBlock, "block");
 }
 
 /*
@@ -26,13 +26,8 @@ Everything apart from glass and precious resource
 for (let index = 0; index < DECOR_TOOLS_LEN; index++){
     let decorBlock = DECOR_TOOLS[index];
     
-    let TYPES = ["bricks"];
-    let TYPES_LEN = TYPES.length;
-    for (let typeIndex = 0; typeIndex < TYPES_LEN; typeIndex++){
-        let TYPE = TYPES[typeIndex];
-        BlockLib.createSimpleBlock(decorBlock, TYPE);
-        
-    }
+    BlockLib.createSimpleBlock(decorBlock, "bricks");
+    
 
 }
 
@@ -61,29 +56,32 @@ Callback.addCallback("PreLoaded", function(){
     // Bricks for everything apart from glass and precious resource 
     for (let index = 0; index < DECOR_TOOLS_LEN; index++){
         let decorBlock = DECOR_TOOLS[index];
-        let ingredient = DECOR_TOOLS_VAN_ID[index]
+        let ingredient = DECOR_TOOLS_VAN_ID[index];
        
         // Bricks
-        RecipeLib.shaped.resultFromNameOneIngredient({result: [decorBlock, "bricks", 4], shape: ["xx", "xx"], ingredient: [ingredient[0], ingredient[1]]}, BlockID)
+        RecipeLib.shaped.resultFromNameOneIngredient({result: [decorBlock, "bricks", 4], shape: RecipeLib.recipes.blocks.bricks, ingredient: [ingredient[0], ingredient[1]]}, BlockID);
         
 
         
     }
 
 
-    // Glass blocks and bricks 
-    for (let index = 0; index < GLASS_BLOCK_LEN; index++){
-        let decorBlock = GLASS_BLOCK[index];
-        let ingredient = GLASS_BLOCK_VAN_ID[index]
+    // Glass and precious resource bricks
+    for (let index = 0; index < GLASS_LAMP_LEN; index++){
+        let decorBlock = GLASS_LAMP[index];
        
         // Bricks
-        RecipeLib.shaped.resultFromNameOneIngredientFromName({result: [decorBlock, "bricks", 4], shape: ["xx", "xx"], ingredient: [decorBlock, "block"]}, BlockID)
-        
+        RecipeLib.shaped.resultFromNameOneIngredientFromName({result: [decorBlock, "bricks", 4], shape: RecipeLib.recipes.blocks.bricks, ingredient: [decorBlock, "block"]}, BlockID);
+    }
+    
+    // Glass blocks
+    for (let index = 0; index < GLASS_BLOCK_LEN; index++){
+        let decorBlock = GLASS_BLOCK[index];
+        let ingredient = GLASS_BLOCK_VAN_ID[index];
 
         // Blocks
-        RecipeLib.shaped.resultFromName({result: [decorBlock, "block", 8], shape: ["xxx", "xdx", "xxx"], ingredients: ["d", ingredient[0], ingredient[1], "x", 20, 0]}, BlockID)
-        
-
+        RecipeLib.shaped.resultFromName({result: [decorBlock, "block", 8], shape: ["xxx", "xdx", "xxx"], ingredients: ["d", ingredient[0], ingredient[1], "x", 20, 0]}, BlockID);
+    
         
     }
 
@@ -93,10 +91,9 @@ Callback.addCallback("PreLoaded", function(){
         let decorBlock = INCL_LAMP[index];
         let ingredient = INCL_LAMP_VAN_ID[index]; 
        
-        // Bricks
-        Recipes.addShaped({id: BlockID[CoreHelpers.createIDName(decorBlock, "bricks")], count: 4, data: 0}, ["xx", "xx"], ["x", BlockID[CoreHelpers.createIDName(decorBlock, "block")], 0]);
+        // Blocks
+        RecipeLib.shapeless.resultFromName({result: [decorBlock, "block", 1], ingredients: [{id: BlockID.blockDecoration, data: 0},{id: ingredient[0], data: ingredient[1]}]}, BlockID)
 
-        Recipes.addShapeless({id: BlockID[CoreHelpers.createIDName(decorBlock, "block")], count: 1, data: 0}, [{id: BlockID[CoreHelpers.createIDName("decoration", "block")], data: 0},{id: ingredient[0], data: ingredient[1]}]);
 
         
     }

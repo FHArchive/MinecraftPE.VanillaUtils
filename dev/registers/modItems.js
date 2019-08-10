@@ -90,14 +90,14 @@ Callback.addCallback("PreLoaded", function(){
         for (let toolIndex = 0; toolIndex < TOOLS_LEN; toolIndex++){
             let tcType = TOOLS[toolIndex];
             // Create the recipe for the tool 
-            Recipes.addShaped({id: ItemID[CoreHelpers.createIDName(inclTool, tcType)], count: 1, data: 0}, ItemLib.recipes.tools[tcType], ["a", ingredient[0], ingredient[1], "b", 280, 0]);
+            RecipeLib.shaped.resultFromName({result: [inclTool, tcType, 1], shape: RecipeLib.recipes.items.tools[tcType], ingredients: ["a", ingredient[0], ingredient[1], "b", 280, 0]}, ItemID);
         }
 
         // Armor 
         for (let armorIndex = 0; armorIndex < ARMOR_LEN; armorIndex++){
             let acType = ARMOR[armorIndex];
             // Create the recipe for the armor 
-            Recipes.addShaped({id: ItemID[CoreHelpers.createIDName(inclTool, acType)], count: 1, data: 0}, ItemLib.recipes.armor[acType], ["x", ingredient[0], ingredient[1]]);
+            RecipeLib.shaped.resultFromNameOneIngredient({result: [inclTool, acType, 1], shape: RecipeLib.recipes.items.armor[acType], ingredient: [ingredient[0], ingredient[1]]}, ItemID);
 
         }
     }

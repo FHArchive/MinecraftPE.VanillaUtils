@@ -172,37 +172,37 @@ Callback.addCallback("PreLoaded", function(){
     // Transmute up
     
     for (let index = 0; index < transmute2.length; index++){
-        let recipe = transmute2[index]
+        let recipe = transmute2[index];
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
     for (let index = 0; index < transmute4.length; index++){
-        let recipe = transmute4[index]
+        let recipe = transmute4[index];
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
 
     // Transmute down 
     for (let index = 0; index < dtransmute2.length; index++){
-        let recipe = dtransmute2[index]
+        let recipe = dtransmute2[index];
         Recipes.addShapeless({id: recipe["result"][0], count: 2, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
 
     }
     for (let index = 0; index < dtransmute4.length; index++){
-        let recipe = dtransmute4[index]
+        let recipe = dtransmute4[index];
         Recipes.addShapeless({id: recipe["result"][0], count: 4, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
     }
 
     // Transmute left right
     for (let index = 0; index < transmute.length; index++){
-        let recipe = transmute[index]
+        let recipe = transmute[index];
         Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: ItemID["ethereal"], data: 0}]);
     }
 
     // Transmute smelt
-    for (let index = 0; index < transmute4.length; index++){
-        let recipe = transmute4[index]
-        Recipes.addShapeless({id: recipe["result"][0], count: 1, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: 263, data: 0},{id: ItemID["ethereal"], data: 0}]);
+    for (let index = 0; index < transmuteSmelt.length; index++){
+        let recipe = transmuteSmelt[index];
+        Recipes.addShapeless({id: recipe["result"][0], count: 7, data: recipe["result"][1]}, [{id: recipe["ingredient"][0], data: recipe["ingredient"][1]}, {id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: recipe["ingredient"][0], data: recipe["ingredient"][1]},{id: 263, data: 0},{id: ItemID["ethereal"], data: 0}]);
 
     }
 
